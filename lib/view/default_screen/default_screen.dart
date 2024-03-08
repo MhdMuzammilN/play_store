@@ -18,28 +18,51 @@ class _DefaultScreenState extends State<DefaultScreen> {
         slivers: <Widget>[
           SliverAppBar(
             title: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 0),
-              child: const Row(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
                 children: <Widget>[
                   Expanded(
-                      child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.search_rounded,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text("Search apps & games"),
-                      Spacer(),
-                      Icon(Icons.mic_none),
-                    ],
+                      child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorConstants.primaryShadeOfPink,
+                        borderRadius: BorderRadius.circular(24)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 24),
+                    child: const Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.search_rounded,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "Search apps & games",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(Icons.mic_none),
+                      ],
+                    ),
                   )),
-                  Icon(Icons.notifications_none_outlined),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  CircleAvatar(
+                  const Stack(
+                    children: [
+                      Icon(Icons.notifications_none_outlined),
+                      CircleAvatar(
+                        radius: 6,
+                        backgroundColor: ColorConstants.primaryBlue,
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  const CircleAvatar(
                     radius: 14,
                   )
                 ],
