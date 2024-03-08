@@ -25,7 +25,8 @@ class _DefaultScreenState extends State<DefaultScreen> {
                   Expanded(
                       child: Container(
                     decoration: BoxDecoration(
-                        color: ColorConstants.primaryShadeOfBlue,
+                        color:
+                            ColorConstants.primaryShadeOfBlue.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(24)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 24),
@@ -104,7 +105,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
                 ),
                 decoration: BoxDecoration(
                   color: currentPageIndex == 0
-                      ? ColorConstants.primaryShadeOfPink
+                      ? ColorConstants.primaryShadeOfBlue
                       : null,
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -123,7 +124,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
                 ),
                 decoration: BoxDecoration(
                   color: currentPageIndex == 1
-                      ? ColorConstants.primaryShadeOfPink
+                      ? ColorConstants.primaryShadeOfBlue
                       : null,
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -144,7 +145,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
                   ),
                   decoration: BoxDecoration(
                     color: currentPageIndex == 2
-                        ? ColorConstants.primaryShadeOfPink
+                        ? ColorConstants.primaryShadeOfBlue
                         : null,
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -164,7 +165,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
                 ),
                 decoration: BoxDecoration(
                   color: currentPageIndex == 3
-                      ? ColorConstants.primaryShadeOfPink
+                      ? ColorConstants.primaryShadeOfBlue
                       : null,
                   borderRadius: BorderRadius.circular(15),
                 ),
