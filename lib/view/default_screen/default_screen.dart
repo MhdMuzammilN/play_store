@@ -53,9 +53,13 @@ class _DefaultScreenState extends State<DefaultScreen> {
                   const Stack(
                     children: [
                       Icon(Icons.notifications_none_outlined),
-                      CircleAvatar(
-                        radius: 6,
-                        backgroundColor: ColorConstants.primaryBlue,
+                      Positioned(
+                        right: 0,
+                        top: 2,
+                        child: CircleAvatar(
+                          radius: 6,
+                          backgroundColor: ColorConstants.primaryBlue,
+                        ),
                       )
                     ],
                   ),
