@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:play_store/core/constants/color_constants.dart';
+import 'package:play_store/core/constants/image_constants.dart';
 
 class DefaultScreen extends StatefulWidget {
   const DefaultScreen({super.key});
@@ -68,6 +69,8 @@ class _DefaultScreenState extends State<DefaultScreen> {
                   ),
                   const CircleAvatar(
                     radius: 14,
+                    backgroundImage:
+                        AssetImage(ImageConstants.userOneProfilePic),
                   )
                 ],
               ),
