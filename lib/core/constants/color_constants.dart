@@ -5,5 +5,5 @@ class ColorConstants {
   static const Color primaryBlue = Colors.blue;
 
   static const Color primaryShadeOfPink = Color(0xffF3DCEA);
-  static const Color primaryShadeOfBlue = Color(0xffE9EDF6);
+  static const Color primaryShadeOfBlue = Color(0xffC3E7FF);
 }

@@ -25,7 +25,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
                   Expanded(
                       child: Container(
                     decoration: BoxDecoration(
-                        color: ColorConstants.primaryShadeOfPink,
+                        color: ColorConstants.primaryShadeOfBlue,
                         borderRadius: BorderRadius.circular(24)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 24),
