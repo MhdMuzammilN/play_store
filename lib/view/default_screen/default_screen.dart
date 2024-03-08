@@ -13,6 +13,42 @@ class _DefaultScreenState extends State<DefaultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //1. Body
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            title: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              child: const Row(
+                children: <Widget>[
+                  Expanded(
+                      child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.search_rounded,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text("Search apps & games"),
+                      Spacer(),
+                      Icon(Icons.mic_none),
+                    ],
+                  )),
+                  Icon(Icons.notifications_none_outlined),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  CircleAvatar(
+                    radius: 14,
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+      //2. BottomNavigationBar
       bottomNavigationBar: BottomNavigationBar(
         //1. Styling
         type: BottomNavigationBarType.fixed,
