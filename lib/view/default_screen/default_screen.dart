@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:play_store/core/constants/color_constants.dart';
-import 'package:play_store/core/constants/image_constants.dart';
+
 import 'package:play_store/dummy_db.dart';
 import 'package:play_store/view/default_screen/widgets/custom_appbar_title.dart';
 
