@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:play_store/core/constants/color_constants.dart';
 
 import 'package:play_store/dummy_db.dart';
+import 'package:play_store/view/default_screen/widgets/custom_appbar_tabs.dart';
 import 'package:play_store/view/default_screen/widgets/custom_appbar_title.dart';
 
 class DefaultScreen extends StatefulWidget {
@@ -13,99 +14,84 @@ class DefaultScreen extends StatefulWidget {
 
 class _DefaultScreenState extends State<DefaultScreen> {
   int currentPageIndex = 0;
+  String currentPage = "Games";
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 5,
-        child: Scaffold(
-          //1. Body
-          body: SafeArea(
-            child: CustomScrollView(
-              slivers: <Widget>[
-                const SliverAppBar(
-                  pinned: true,
-                  floating: true,
-                  snap: false,
-                  surfaceTintColor: Colors.white,
-                  title: CustomAppbarTitle(),
-                  bottom: TabBar(
-                      isScrollable: true,
-                      tabAlignment: TabAlignment.start,
-                      tabs: [
-                        Tab(
-                          text: "For you",
-                        ),
-                        Tab(
-                          text: "Top charts",
-                        ),
-                        Tab(
-                          text: "Kids",
-                        ),
-                        Tab(
-                          text: "Premium",
-                        ),
-                        Tab(
-                          text: "Categories",
-                        ),
-                      ]),
-                ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        color: index.isOdd ? Colors.white : Colors.black12,
-                        height: 100.0,
-                        child: Center(
-                          child: Text('$index',
-                              textScaler: const TextScaler.linear(5)),
-                        ),
-                      );
-                    },
-                    childCount: 20,
-                  ),
-                ),
-              ],
+    return Scaffold(
+      //1. Body
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              pinned: true,
+              floating: true,
+              snap: false,
+              surfaceTintColor: Colors.white,
+              title: const CustomAppbarTitle(),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(50),
+                child: CustomAppbarTabs(currentPage: currentPage),
+              ),
             ),
-          ),
-          //2. BottomNavigationBar
-          bottomNavigationBar: BottomNavigationBar(
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Container(
+                    color: index.isOdd ? Colors.white : Colors.black12,
+                    height: 100.0,
+                    child: Center(
+                      child: Text('$index',
+                          textScaler: const TextScaler.linear(5)),
+                    ),
+                  );
+                },
+                childCount: 20,
+              ),
+            ),
+          ],
+        ),
+      ),
+      //2. BottomNavigationBar
+      bottomNavigationBar: BottomNavigationBar(
 
-              //1. Styling
-              type: BottomNavigationBarType.fixed,
-              iconSize: 26,
-              selectedItemColor: ColorConstants.primaryBlack,
-              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          //1. Styling
+          type: BottomNavigationBarType.fixed,
+          iconSize: 26,
+          selectedItemColor: ColorConstants.primaryBlack,
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
 
-              //2. Functional
-              currentIndex: currentPageIndex,
-              onTap: (value) {
-                currentPageIndex = value;
-                setState(() {});
-              },
+          //2. Functional
+          currentIndex: currentPageIndex,
+          onTap: (value) {
+            currentPageIndex = value;
+            currentPage = DummyDb.bottomNavigationBarItems[value]["iconName"];
+            setState(() {});
+          },
 
-              //3. Bottom Navigation-Bar items
-              items: List.generate(
-                DummyDb.bottomNavigationBarItems.length,
-                (index) => BottomNavigationBarItem(
-                  icon: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        color: currentPageIndex == index
-                            ? ColorConstants.primaryShadeOfBlue
-                            : null,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: currentPageIndex == index
-                          ? Icon(DummyDb.bottomNavigationBarItems[index]
-                              ["defaultIcon"])
-                          : Icon(DummyDb.bottomNavigationBarItems[index]
-                              ["activeIcon"])),
-                  label: DummyDb.bottomNavigationBarItems[index]["iconName"],
-                ),
-              )),
-        ));
+          //3. Bottom Navigation-Bar items
+          items: List.generate(
+            DummyDb.bottomNavigationBarItems.length,
+            (index) => BottomNavigationBarItem(
+              icon: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                  ),
+                  decoration: BoxDecoration(
+                    color: currentPageIndex == index
+                        ? ColorConstants.primaryShadeOfBlue
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: currentPageIndex == index
+                      ? Icon(DummyDb.bottomNavigationBarItems[index]
+                          ["defaultIcon"])
+                      : Icon(DummyDb.bottomNavigationBarItems[index]
+                          ["activeIcon"])),
+              label: DummyDb.bottomNavigationBarItems[index]["iconName"],
+            ),
+          )),
+    );
   }
 }

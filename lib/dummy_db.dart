@@ -18,17 +18,35 @@ class DummyDb {
       "activeIcon": Icons.sell_outlined,
     },
     {
-      "iconName": "Games",
+      "iconName": "Books",
       "defaultIcon": Icons.book,
       "activeIcon": Icons.book_outlined,
     },
   ];
 
-  static const List gamesCategories = [
-    "For you",
-    "Top charts",
-    "Kids",
-    "Premium",
-    "For Categories",
-  ];
+  static const Map<dynamic, dynamic> categories = {
+    "Games": [
+      "For you",
+      "Top charts",
+      "Kids",
+      "Premium",
+      "Categories",
+    ],
+    "Apps": [
+      "For you",
+      "Top charts",
+      "Kids",
+      "Categories",
+    ],
+    "Offers": [],
+    "Books": [
+      "Ebooks",
+      "Audiobooks",
+      "Comics",
+      "Genres",
+      "Top Selling",
+      "New releases",
+      "Top free"
+    ]
+  };
 }
