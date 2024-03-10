@@ -29,10 +29,12 @@ class _DefaultScreenState extends State<DefaultScreen> {
               snap: false,
               surfaceTintColor: Colors.white,
               title: const CustomAppbarTitle(),
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(50),
-                child: CustomAppbarTabs(currentPage: currentPage),
-              ),
+              bottom: currentPageIndex != 2
+                  ? PreferredSize(
+                      preferredSize: const Size.fromHeight(50),
+                      child: CustomAppbarTabs(currentPage: currentPage),
+                    )
+                  : null,
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
