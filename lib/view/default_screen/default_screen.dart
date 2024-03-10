@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:play_store/core/constants/color_constants.dart';
-
 import 'package:play_store/dummy_db.dart';
 import 'package:play_store/view/default_screen/widgets/custom_appbar_tabs.dart';
 import 'package:play_store/view/default_screen/widgets/custom_appbar_title.dart';
@@ -31,7 +30,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
               title: const CustomAppbarTitle(),
               bottom: currentPageIndex != 2
                   ? PreferredSize(
-                      preferredSize: const Size.fromHeight(50),
+                      preferredSize: const Size.fromHeight(48),
                       child: CustomAppbarTabs(currentPage: currentPage),
                     )
                   : null,
