@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:play_store/core/constants/color_constants.dart';
 import 'package:play_store/dummy_db.dart';
-import 'package:play_store/view/default_screen/widgets/custom_appbar_tabs.dart';
+
 import 'package:play_store/view/default_screen/widgets/custom_appbar_title.dart';
 
 class DefaultScreen extends StatefulWidget {
@@ -14,12 +14,6 @@ class DefaultScreen extends StatefulWidget {
 class _DefaultScreenState extends State<DefaultScreen> {
   int currentPageIndex = 0;
   String currentPage = "Games";
-  late TabController controller;
-
-  // void initStat(){
-  //   super.initState();
-  //   controller = TabController(length: DummyDb.categories[currentPage], vsync: this);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,23 +22,12 @@ class _DefaultScreenState extends State<DefaultScreen> {
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              SliverAppBar(
+              const SliverAppBar(
                 pinned: true,
                 floating: true,
                 snap: false,
                 surfaceTintColor: Colors.white,
-                title: const CustomAppbarTitle(),
-                bottom: currentPageIndex != 2
-                    ? PreferredSize(
-                        preferredSize: const Size.fromHeight(48),
-                        child: CustomAppbarTabs(
-                          onBuildTabs: (categoryTabs) {
-                            setState(() {});
-                          },
-                          currentPage: currentPage,
-                        ),
-                      )
-                    : null,
+                title: CustomAppbarTitle(),
               ),
             ];
           },
