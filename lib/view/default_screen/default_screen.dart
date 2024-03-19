@@ -14,45 +14,63 @@ class DefaultScreen extends StatefulWidget {
 class _DefaultScreenState extends State<DefaultScreen> {
   int currentPageIndex = 0;
   String currentPage = "Games";
+  late TabController controller;
+
+  // void initStat(){
+  //   super.initState();
+  //   controller = TabController(length: DummyDb.categories[currentPage], vsync: this);
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //1. Body
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              pinned: true,
-              floating: true,
-              snap: false,
-              surfaceTintColor: Colors.white,
-              title: const CustomAppbarTitle(),
-              bottom: currentPageIndex != 2
-                  ? PreferredSize(
-                      preferredSize: const Size.fromHeight(48),
-                      child: CustomAppbarTabs(currentPage: currentPage),
-                    )
-                  : null,
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Container(
-                    color: index.isOdd ? Colors.white : Colors.black12,
-                    height: 100.0,
-                    child: Center(
-                      child: Text('$index',
-                          textScaler: const TextScaler.linear(5)),
-                    ),
-                  );
-                },
-                childCount: 20,
+      body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                pinned: true,
+                floating: true,
+                snap: false,
+                surfaceTintColor: Colors.white,
+                title: const CustomAppbarTitle(),
+                bottom: currentPageIndex != 2
+                    ? PreferredSize(
+                        preferredSize: const Size.fromHeight(48),
+                        child: CustomAppbarTabs(
+                          onBuildTabs: (categoryTabs) {
+                            setState(() {});
+                          },
+                          currentPage: currentPage,
+                        ),
+                      )
+                    : null,
               ),
-            ),
-          ],
-        ),
-      ),
+            ];
+          },
+          body: Container(
+            color: Colors.red,
+          )),
+
+      //       // SliverList(
+      //       //   delegate: SliverChildBuilderDelegate(
+      //       //     (BuildContext context, int index) {
+      //       //       return Container(
+      //       //         color: index.isOdd ? Colors.white : Colors.black12,
+      //       //         height: 100.0,
+      //       //         child: Center(
+      //       //           child: Text('$index',
+      //       //               textScaler: const TextScaler.linear(5)),
+      //       //         ),
+      //       //       );
+      //       //     },
+      //       //     childCount: 20,
+      //       //   ),
+      //       // ),
+      //     ],
+      //   ),
+      // ),
+
       //2. BottomNavigationBar
       bottomNavigationBar: BottomNavigationBar(
 
